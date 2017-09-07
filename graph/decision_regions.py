@@ -1,12 +1,12 @@
-'''
-from  Raschka's PML Book Chaper2_2
-'''
+# -*- coding:utf-8 -*-
+
+# テストサンプルを目立たせるために点を〇で表示(test_idx)
 
 import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib.colors import ListedColormap
 
-def plt_decision_regions(X, y, classifier, resolution=0.02):
+def plt_decision_regions(X, y, classifier, test_idx=None, resolution=0.02):
     markers = ('s','x','o','^','v')
     colors = ('red','blue','lightgreen','gray','cyan')
     cmap = ListedColormap(colors[:len(np.unique(y))])
@@ -26,3 +26,8 @@ def plt_decision_regions(X, y, classifier, resolution=0.02):
 
     for idx, cl in enumerate(np.unique(y)):
         plt.scatter(x=X[y==cl,0], y=X[y==cl,1], alpha=0.8, c=cmap(idx), marker=markers[idx], label=cl)
+
+
+    if test_idx:
+        X_test, y_test = X[test_idx, :], y[test_idx]
+        plt.scatter(x=X_test[:,0], y=X_test[:,1], edgecolors='black', c='', alpha=0.8, linewidths=1.3, marker='o', s=55,label="test set")

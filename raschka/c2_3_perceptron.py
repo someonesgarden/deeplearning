@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 '''
 Raschka's PML Book Chaper2_3
 '''
